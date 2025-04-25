@@ -52,16 +52,16 @@ export default function StudentList({ students, route }: StudentListProps) {
                                     <img
                                         src={`/storage/${student.photo}`}
                                         alt={student.user.name}
-                                        className="h-14 w-14 rounded-full border-2 border-indigo-100 object-cover"
+                                        className="h-14 w-14 rounded-full border-2 border-rose-100 object-cover"
                                     />
                                 ) : student.user.photo ? (
                                     <img
                                         src={`/storage/${student.user.photo}`}
                                         alt={student.user.name}
-                                        className="h-14 w-14 rounded-full border-2 border-indigo-100 object-cover"
+                                        className="h-14 w-14 rounded-full border-2 border-rose-100 object-cover"
                                     />
                                 ) : (
-                                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 text-indigo-600">
+                                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-rose-100 to-purple-100 text-rose-600">
                                         <UserIcon className="h-7 w-7" />
                                     </div>
                                 )}
@@ -72,7 +72,7 @@ export default function StudentList({ students, route }: StudentListProps) {
 
                                 <div className="mt-3 flex flex-wrap gap-2">
                                     {student.angkatan && (
-                                        <Badge className="flex items-center gap-1 bg-indigo-100 text-indigo-800 hover:bg-indigo-200">
+                                        <Badge className="flex items-center gap-1 bg-rose-100 text-rose-800 hover:bg-rose-200">
                                             <CalendarIcon className="h-3 w-3" />
                                             <span>{student.angkatan}</span>
                                         </Badge>
@@ -95,7 +95,7 @@ export default function StudentList({ students, route }: StudentListProps) {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="flex items-center gap-1 border-indigo-200 text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800"
+                                    className="flex items-center gap-1 border-rose-200 text-rose-700 hover:bg-rose-50 hover:text-rose-800"
                                 >
                                     <EyeIcon className="h-4 w-4" />
                                     View
@@ -153,16 +153,16 @@ export default function StudentList({ students, route }: StudentListProps) {
                                         <img
                                             src={`/storage/${student.photo}`}
                                             alt={student.user.name}
-                                            className="h-10 w-10 rounded-full border-2 border-indigo-100 object-cover"
+                                            className="h-10 w-10 rounded-full border-2 border-rose-100 object-cover"
                                         />
                                     ) : student.user.photo ? (
                                         <img
                                             src={`/storage/${student.user.photo}`}
                                             alt={student.user.name}
-                                            className="h-10 w-10 rounded-full border-2 border-indigo-100 object-cover"
+                                            className="h-10 w-10 rounded-full border-2 border-rose-100 object-cover"
                                         />
                                     ) : (
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 text-indigo-600">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-rose-100 to-purple-100 text-rose-600">
                                             <UserIcon className="h-5 w-5" />
                                         </div>
                                     )}
@@ -176,7 +176,7 @@ export default function StudentList({ students, route }: StudentListProps) {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {student.angkatan ? (
-                                        <Badge className="flex items-center gap-1 bg-indigo-100 text-indigo-800">
+                                        <Badge className="flex items-center gap-1 bg-rose-100 text-rose-800">
                                             <CalendarIcon className="h-3 w-3" />
                                             <span>{student.angkatan}</span>
                                         </Badge>
@@ -207,7 +207,7 @@ export default function StudentList({ students, route }: StudentListProps) {
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="flex items-center gap-1 border-indigo-200 text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800"
+                                                className="flex items-center gap-1 border-rose-200 text-rose-700 hover:bg-rose-50 hover:text-rose-800"
                                             >
                                                 <EyeIcon className="h-4 w-4" />
                                                 <span className="hidden sm:inline">View</span>

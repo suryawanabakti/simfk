@@ -7,6 +7,7 @@ interface StudentProfileHeaderProps {
         user: {
             name: string;
             photo?: string | null;
+            id?: string | number;
         };
         no_test?: string;
         prodi?: string;
@@ -37,9 +38,9 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
     };
 
     return (
-        <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-0.5 shadow-xl">
+        <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-rose-600 via-purple-600 to-pink-500 p-0.5 shadow-xl">
             <div className="relative rounded-[0.65rem] bg-white">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-purple-50 opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-50 to-purple-50 opacity-50"></div>
                 <div className="relative p-6">
                     <div className="flex flex-col items-center gap-6 md:flex-row">
                         <div className="relative">
@@ -56,13 +57,13 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
                                     className="h-28 w-28 rounded-full border-4 border-white object-cover shadow-md"
                                 />
                             ) : (
-                                <div className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gradient-to-r from-indigo-100 to-purple-100 shadow-md">
-                                    <UserIcon className="h-12 w-12 text-indigo-600" />
+                                <div className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gradient-to-r from-rose-100 to-purple-100 shadow-md">
+                                    <UserIcon className="h-12 w-12 text-rose-600" />
                                 </div>
                             )}
                             <div className="absolute -right-1 -bottom-1 rounded-full bg-white p-1 shadow-md">
-                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500 text-white">
-                                    {student.jk === 'Laki-laki' ? 'M' : student.jk === 'Perempuan' ? 'F' : '?'}
+                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-rose-500 text-white">
+                                    {student.jk === 'Laki-laki' ? 'L' : student.jk === 'Perempuan' ? 'P' : '?'}
                                 </div>
                             </div>
                         </div>
@@ -72,8 +73,8 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
 
                             <div className="mt-2 flex flex-wrap justify-center gap-2 md:justify-start">
                                 {student.no_test && (
-                                    <Badge variant="outline" className="flex items-center gap-1 border-indigo-200 px-3 py-1 text-indigo-700">
-                                        <span className="font-mono">{student.no_test}</span>
+                                    <Badge variant="outline" className="flex items-center gap-1 border-rose-200 px-3 py-1 text-rose-700">
+                                        <span className="font-mono">No. Tes: {student.no_test}</span>
                                     </Badge>
                                 )}
 
@@ -86,14 +87,14 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
 
                                 {student.jalur_penerimaan && (
                                     <Badge className={`px-3 py-1 ${getAdmissionBadgeColor(student.jalur_penerimaan)}`}>
-                                        {student.jalur_penerimaan}
+                                        Jalur: {student.jalur_penerimaan}
                                     </Badge>
                                 )}
 
                                 {student.angkatan && (
                                     <Badge variant="outline" className="flex items-center gap-1 border-pink-200 px-3 py-1 text-pink-700">
                                         <CalendarIcon className="h-3.5 w-3.5" />
-                                        <span>Batch {student.angkatan}</span>
+                                        <span>Angkatan {student.angkatan}</span>
                                     </Badge>
                                 )}
                             </div>
@@ -101,14 +102,14 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
                             <div className="mt-4 flex flex-wrap justify-center gap-4 text-gray-600 md:justify-start">
                                 {student.email && (
                                     <div className="flex items-center gap-2">
-                                        <MailIcon className="h-4 w-4 text-indigo-500" />
+                                        <MailIcon className="h-4 w-4 text-rose-500" />
                                         <span>{student.email}</span>
                                     </div>
                                 )}
 
                                 {student.nohp && (
                                     <div className="flex items-center gap-2">
-                                        <PhoneIcon className="h-4 w-4 text-indigo-500" />
+                                        <PhoneIcon className="h-4 w-4 text-rose-500" />
                                         <span>{student.nohp}</span>
                                     </div>
                                 )}
@@ -116,8 +117,8 @@ export default function StudentProfileHeader({ student }: StudentProfileHeaderPr
                         </div>
 
                         <div className="hidden md:block">
-                            <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
-                                <span className="text-xs font-medium uppercase">Student</span>
+                            <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-gradient-to-r from-rose-600 to-purple-600 text-white shadow-lg">
+                                <span className="text-xs font-medium uppercase">Mahasiswa</span>
                                 <span className="text-2xl font-bold">ID</span>
                                 <span className="text-sm font-medium">{student.user.id}</span>
                             </div>

@@ -133,7 +133,7 @@ const documentTypes = [
         name: 'Biodata Unhas',
         icon: FileIcon,
         description: 'Format biodata dengan tabel dan foto',
-        color: 'text-indigo-500',
+        color: 'text-rose-500',
     },
     {
         id: 'biodata-fk',
@@ -310,278 +310,281 @@ export default function PrintDocuments({ students }: Props) {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Print Documents" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h1 className="flex items-center gap-2 text-2xl font-bold">
-                            <PrinterIcon className="h-6 w-6 text-indigo-600" />
-                            Print Student Documents
-                        </h1>
-                        <p className="mt-1 text-gray-500">Select students and document type to print</p>
-                    </div>
-                </div>
+        <div className="flex items-center justify-between">
+  <div>
+    <h1 className="flex items-center gap-2 text-2xl font-bold">
+      <PrinterIcon className="h-6 w-6 text-rose-600" />
+      Cetak Dokumen Mahasiswa
+    </h1>
+    <p className="mt-1 text-gray-500">Pilih mahasiswa dan jenis dokumen yang ingin dicetak</p>
+  </div>
+</div>
+
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                    <Card className="overflow-hidden border-none shadow-md md:col-span-2">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2">
-                                <FileTextIcon className="h-5 w-5" />
-                                Select Students
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0">
-                            <div className="border-b bg-gray-50 p-4">
-                                <div className="flex flex-col gap-3 md:flex-row">
-                                    <div className="relative flex-1">
-                                        <SearchIcon className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                                        <Input
-                                            type="text"
-                                            placeholder="Search by name, username, or ID..."
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500"
-                                        />
-                                    </div>
+                <Card className="overflow-hidden border-none shadow-md md:col-span-2">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2">
+      <FileTextIcon className="h-5 w-5" />
+      Pilih Mahasiswa
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="p-0">
+    <div className="border-b bg-gray-50 p-4">
+      <div className="flex flex-col gap-3 md:flex-row">
+        <div className="relative flex-1">
+          <SearchIcon className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Input
+            type="text"
+            placeholder="Cari berdasarkan nama, username, atau NIM..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border-gray-300 pl-10 focus:border-rose-500 focus:ring-rose-500"
+          />
+        </div>
 
-                                    <div className="flex gap-2">
-                                        <Select
-                                            value={programFilter || 'all'}
-                                            onValueChange={(value) => setProgramFilter(value === 'all' ? null : value)}
-                                        >
-                                            <SelectTrigger className="w-[180px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
-                                                <div className="flex items-center gap-2">
-                                                    <GraduationCapIcon className="h-4 w-4 text-indigo-500" />
-                                                    <SelectValue placeholder="Program" />
-                                                </div>
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="all">All Programs</SelectItem>
-                                                {programs.map((program) => (
-                                                    <SelectItem key={program} value={program}>
-                                                        {program}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
+        <div className="flex gap-2">
+          <Select
+            value={programFilter || 'all'}
+            onValueChange={(value) => setProgramFilter(value === 'all' ? null : value)}
+          >
+            <SelectTrigger className="w-[180px] border-gray-300 focus:border-rose-500 focus:ring-rose-500">
+              <div className="flex items-center gap-2">
+                <GraduationCapIcon className="h-4 w-4 text-rose-500" />
+                <SelectValue placeholder="Program Studi" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Program</SelectItem>
+              {programs.map((program) => (
+                <SelectItem key={program} value={program}>
+                  {program}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-                                        <Select
-                                            value={batchFilter?.toString() || 'all'}
-                                            onValueChange={(value) => setBatchFilter(value === 'all' ? null : Number.parseInt(value))}
-                                        >
-                                            <SelectTrigger className="w-[140px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
-                                                <div className="flex items-center gap-2">
-                                                    <CalendarIcon className="h-4 w-4 text-indigo-500" />
-                                                    <SelectValue placeholder="Batch" />
-                                                </div>
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="all">All Batches</SelectItem>
-                                                {batches.map((batch) => (
-                                                    <SelectItem key={batch} value={batch.toString()}>
-                                                        {batch}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
+          <Select
+            value={batchFilter?.toString() || 'all'}
+            onValueChange={(value) => setBatchFilter(value === 'all' ? null : Number.parseInt(value))}
+          >
+            <SelectTrigger className="w-[140px] border-gray-300 focus:border-rose-500 focus:ring-rose-500">
+              <div className="flex items-center gap-2">
+                <CalendarIcon className="h-4 w-4 text-rose-500" />
+                <SelectValue placeholder="Angkatan" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Angkatan</SelectItem>
+              {batches.map((batch) => (
+                <SelectItem key={batch} value={batch.toString()}>
+                  {batch}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-                                        {(searchQuery || programFilter || batchFilter) && (
-                                            <Button variant="outline" onClick={resetFilters} className="border-gray-300 text-gray-600">
-                                                Reset
-                                            </Button>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
+          {(searchQuery || programFilter || batchFilter) && (
+            <Button variant="outline" onClick={resetFilters} className="border-gray-300 text-gray-600">
+              Atur Ulang
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
 
-                            <div className="border-b bg-white p-4">
-                                <div className="mb-4 flex items-center">
-                                    <Checkbox
-                                        id="selectAll"
-                                        checked={selectAll}
-                                        onCheckedChange={handleSelectAll}
-                                        className="mr-2 h-5 w-5 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                    />
-                                    <Label htmlFor="selectAll" className="flex items-center gap-2 font-medium">
-                                        Select All Students
-                                        <span className="text-sm text-gray-500">({filteredStudents.length} students)</span>
-                                    </Label>
-                                </div>
-                            </div>
+    <div className="border-b bg-white p-4">
+      <div className="mb-4 flex items-center">
+        <Checkbox
+          id="selectAll"
+          checked={selectAll}
+          onCheckedChange={handleSelectAll}
+          className="mr-2 h-5 w-5 border-gray-300 text-rose-600 focus:ring-rose-500"
+        />
+        <Label htmlFor="selectAll" className="flex items-center gap-2 font-medium">
+          Pilih Semua Mahasiswa
+          <span className="text-sm text-gray-500">({filteredStudents.length} mahasiswa)</span>
+        </Label>
+      </div>
+    </div>
 
-                            <div className="max-h-[400px] overflow-y-auto">
-                                {filteredStudents.length > 0 ? (
-                                    <ul className="divide-y">
-                                        {filteredStudents.map((student) => (
-                                            <li key={student.id} className="flex items-center p-4 transition-colors hover:bg-gray-50">
-                                                <Checkbox
-                                                    id={`student-${student.id}`}
-                                                    checked={selectedStudents.includes(student.id)}
-                                                    onCheckedChange={() => handleCheckboxChange(student.id)}
-                                                    className="mr-4 h-5 w-5 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                                />
-                                                <div className="flex flex-1 items-center gap-3">
-                                                    <div className="flex-shrink-0">
-                                                        {student.user.photo ? (
-                                                            <img
-                                                                src={`/storage/${student.user.photo}`}
-                                                                alt={student.user.name}
-                                                                className="h-10 w-10 rounded-full border-2 border-indigo-100 object-cover"
-                                                            />
-                                                        ) : (
-                                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 text-indigo-600">
-                                                                <UserIcon className="h-5 w-5" />
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                    <div className="flex-1">
-                                                        <Label htmlFor={`student-${student.id}`} className="cursor-pointer font-medium text-gray-900">
-                                                            {student.user.name}
-                                                        </Label>
-                                                        <div className="font-mono text-sm text-gray-500">{student.user.username}</div>
-                                                    </div>
-                                                    <div className="flex flex-wrap justify-end gap-2">
-                                                        {student.angkatan && (
-                                                            <Badge className="flex items-center gap-1 bg-indigo-100 text-indigo-800">
-                                                                <CalendarIcon className="h-3 w-3" />
-                                                                <span>{student.angkatan}</span>
-                                                            </Badge>
-                                                        )}
-                                                        {student.prodi && (
-                                                            <Badge className="flex items-center gap-1 bg-purple-100 text-purple-800">
-                                                                <GraduationCapIcon className="h-3 w-3" />
-                                                                <span>{student.prodi}</span>
-                                                            </Badge>
-                                                        )}
+    <div className="max-h-[400px] overflow-y-auto">
+      {filteredStudents.length > 0 ? (
+        <ul className="divide-y">
+          {filteredStudents.map((student) => (
+            <li key={student.id} className="flex items-center p-4 transition-colors hover:bg-gray-50">
+              <Checkbox
+                id={`student-${student.id}`}
+                checked={selectedStudents.includes(student.id)}
+                onCheckedChange={() => handleCheckboxChange(student.id)}
+                className="mr-4 h-5 w-5 border-gray-300 text-rose-600 focus:ring-rose-500"
+              />
+              <div className="flex flex-1 items-center gap-3">
+                <div className="flex-shrink-0">
+                  {student.user.photo ? (
+                    <img
+                      src={`/storage/${student.user.photo}`}
+                      alt={student.user.name}
+                      className="h-10 w-10 rounded-full border-2 border-rose-100 object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-rose-100 to-purple-100 text-rose-600">
+                      <UserIcon className="h-5 w-5" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1">
+                  <Label htmlFor={`student-${student.id}`} className="cursor-pointer font-medium text-gray-900">
+                    {student.user.name}
+                  </Label>
+                  <div className="font-mono text-sm text-gray-500">{student.user.username}</div>
+                </div>
+                <div className="flex flex-wrap justify-end gap-2">
+                  {student.angkatan && (
+                    <Badge className="flex items-center gap-1 bg-rose-100 text-rose-800">
+                      <CalendarIcon className="h-3 w-3" />
+                      <span>{student.angkatan}</span>
+                    </Badge>
+                  )}
+                  {student.prodi && (
+                    <Badge className="flex items-center gap-1 bg-purple-100 text-purple-800">
+                      <GraduationCapIcon className="h-3 w-3" />
+                      <span>{student.prodi}</span>
+                    </Badge>
+                  )}
 
-                                                        <Button
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            className="ml-2 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-800"
-                                                            onClick={() => openStudentDetails(student)}
-                                                        >
-                                                            <EyeIcon className="mr-1 h-4 w-4" />
-                                                            Details
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                ) : (
-                                    <div className="p-8 text-center text-gray-500">
-                                        <div className="flex flex-col items-center justify-center">
-                                            <SearchIcon className="mb-2 h-12 w-12 text-gray-300" />
-                                            <p className="text-lg font-medium">No students found</p>
-                                            <p className="text-sm">Try adjusting your search criteria or filters</p>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </CardContent>
-                    </Card>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="ml-2 text-rose-600 hover:bg-rose-50 hover:text-rose-800"
+                    onClick={() => openStudentDetails(student)}
+                  >
+                    <EyeIcon className="mr-1 h-4 w-4" />
+                    Detail
+                  </Button>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="p-8 text-center text-gray-500">
+          <div className="flex flex-col items-center justify-center">
+            <SearchIcon className="mb-2 h-12 w-12 text-gray-300" />
+            <p className="text-lg font-medium">Mahasiswa tidak ditemukan</p>
+            <p className="text-sm">Coba ubah kata kunci pencarian atau filter</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </CardContent>
+</Card>
 
-                    <Card className="overflow-hidden border-none shadow-md">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2">
-                                <PrinterIcon className="h-5 w-5" />
-                                Document Options
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-4">
-                            <form onSubmit={handleSubmit}>
-                                <div className="space-y-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="documentType" className="font-medium text-gray-700">
-                                            Document Type
-                                        </Label>
-                                        <Select value={documentType} onValueChange={(value) => setDocumentType(value)}>
-                                            <SelectTrigger
-                                                id="documentType"
-                                                className="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-                                            >
-                                                <SelectValue placeholder="Select document type" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {documentTypes.map((docType) => (
-                                                    <SelectItem key={docType.id} value={docType.id}>
-                                                        <div className="flex items-center gap-2">
-                                                            <docType.icon className={`h-4 w-4 ${docType.color}`} />
-                                                            <span>{docType.name}</span>
-                                                        </div>
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
 
-                                    {selectedDocType && (
-                                        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                                            <div className="flex items-center gap-3">
-                                                <div
-                                                    className={`flex h-10 w-10 items-center justify-center rounded-full bg-white ${selectedDocType.color}`}
-                                                >
-                                                    <selectedDocType.icon className="h-5 w-5" />
-                                                </div>
-                                                <div>
-                                                    <p className="font-medium text-gray-800">{selectedDocType.name}</p>
-                                                    <p className="text-sm text-gray-600">{selectedDocType.description}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
+<Card className="overflow-hidden border-none shadow-md">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2">
+      <PrinterIcon className="h-5 w-5" />
+      Opsi Dokumen
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="p-4">
+    <form onSubmit={handleSubmit}>
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="documentType" className="font-medium text-gray-700">
+            Jenis Dokumen
+          </Label>
+          <Select value={documentType} onValueChange={(value) => setDocumentType(value)}>
+            <SelectTrigger
+              id="documentType"
+              className="w-full border-gray-300 focus:border-rose-500 focus:ring-rose-500"
+            >
+              <SelectValue placeholder="Pilih jenis dokumen" />
+            </SelectTrigger>
+            <SelectContent>
+              {documentTypes.map((docType) => (
+                <SelectItem key={docType.id} value={docType.id}>
+                  <div className="flex items-center gap-2">
+                    <docType.icon className={`h-4 w-4 ${docType.color}`} />
+                    <span>{docType.name}</span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-                                    {selectedStudents.length > 0 && (
-                                        <div className="rounded-lg border border-indigo-100 bg-gradient-to-r from-indigo-50 to-purple-50 p-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
-                                                    <CheckCircleIcon className="h-5 w-5" />
-                                                </div>
-                                                <div>
-                                                    <p className="font-medium text-indigo-800">
-                                                        {selectedStudents.length} {selectedStudents.length === 1 ? 'student' : 'students'} selected
-                                                    </p>
-                                                    <p className="text-sm text-indigo-600">Ready to generate documents</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
+        {selectedDocType && (
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <div className="flex items-center gap-3">
+              <div
+                className={`flex h-10 w-10 items-center justify-center rounded-full bg-white ${selectedDocType.color}`}
+              >
+                <selectedDocType.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-800">{selectedDocType.name}</p>
+                <p className="text-sm text-gray-600">{selectedDocType.description}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
-                                    <div className="pt-4">
-                                        <Button
-                                            type="submit"
-                                            disabled={processing || selectedStudents.length === 0}
-                                            className="h-12 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-base hover:from-indigo-700 hover:to-purple-700"
-                                        >
-                                            <PrinterIcon className="mr-2 h-5 w-5" />
-                                            {processing ? 'Processing...' : 'Print Selected Documents'}
-                                        </Button>
-                                    </div>
+        {selectedStudents.length > 0 && (
+          <div className="rounded-lg border border-rose-100 bg-gradient-to-r from-rose-50 to-purple-50 p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                <CheckCircleIcon className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium text-rose-800">
+                  {selectedStudents.length} {selectedStudents.length === 1 ? 'mahasiswa' : 'mahasiswa'} dipilih
+                </p>
+                <p className="text-sm text-rose-600">Siap untuk membuat dokumen</p>
+              </div>
+            </div>
+          </div>
+        )}
 
-                                    {selectedStudents.length === 0 && (
-                                        <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
-                                            <div className="flex items-start gap-2">
-                                                <FilterIcon className="mt-0.5 h-5 w-5 flex-shrink-0" />
-                                                <div>
-                                                    <p className="font-medium">No students selected</p>
-                                                    <p>Please select at least one student to print documents</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </form>
-                        </CardContent>
-                    </Card>
+        <div className="pt-4">
+          <Button
+            type="submit"
+            disabled={processing || selectedStudents.length === 0}
+            className="h-12 w-full bg-gradient-to-r from-rose-600 to-purple-600 text-base hover:from-rose-700 hover:to-purple-700"
+          >
+            <PrinterIcon className="mr-2 h-5 w-5" />
+            {processing ? 'Memproses...' : 'Cetak Dokumen yang Dipilih'}
+          </Button>
+        </div>
+
+        {selectedStudents.length === 0 && (
+          <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+            <div className="flex items-start gap-2">
+              <FilterIcon className="mt-0.5 h-5 w-5 flex-shrink-0" />
+              <div>
+                <p className="font-medium">Belum ada mahasiswa yang dipilih</p>
+                <p>Silakan pilih minimal satu mahasiswa untuk mencetak dokumen</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </form>
+  </CardContent>
+</Card>
+
                 </div>
 
                 {/* Student Details Modal */}
                 <Dialog open={detailsOpen} onOpenChange={setDetailsOpen}>
                     <DialogContent className="min-w-full overflow-hidden p-0">
-                        <DialogHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
+                        <DialogHeader className="bg-gradient-to-r from-rose-600 to-purple-600 p-6 text-white">
                             <DialogTitle className="flex items-center gap-2 text-xl font-bold">
                                 <UserIcon className="h-5 w-5" />
                                 Student Details
                             </DialogTitle>
-                            <DialogDescription className="text-indigo-100">Complete information about the selected student</DialogDescription>
+                            <DialogDescription className="text-rose-100">Complete information about the selected student</DialogDescription>
                         </DialogHeader>
 
                         {selectedStudent && (
@@ -596,7 +599,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     className="h-20 w-20 rounded-full border-4 border-white object-cover shadow-md"
                                                 />
                                             ) : (
-                                                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 text-white shadow-md">
+                                                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-purple-500 text-white shadow-md">
                                                     <UserIcon className="h-10 w-10" />
                                                 </div>
                                             )}
@@ -614,7 +617,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     </Badge>
                                                 )}
                                                 {selectedStudent.angkatan && (
-                                                    <Badge className="flex items-center gap-1 bg-indigo-100 text-indigo-800">
+                                                    <Badge className="flex items-center gap-1 bg-rose-100 text-rose-800">
                                                         <CalendarIcon className="h-3 w-3" />
                                                         {selectedStudent.angkatan}
                                                     </Badge>
@@ -658,7 +661,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <UserIcon className="h-5 w-5 text-indigo-500" />
+                                                                <UserIcon className="h-5 w-5 text-rose-500" />
                                                                 Basic Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -704,7 +707,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <MapPinIcon className="h-5 w-5 text-indigo-500" />
+                                                                <MapPinIcon className="h-5 w-5 text-rose-500" />
                                                                 Contact Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -741,7 +744,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card className="md:col-span-2">
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <HomeIcon className="h-5 w-5 text-indigo-500" />
+                                                                <HomeIcon className="h-5 w-5 text-rose-500" />
                                                                 Housing & Family
                                                             </CardTitle>
                                                         </CardHeader>
@@ -780,7 +783,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <GraduationCapIcon className="h-5 w-5 text-indigo-500" />
+                                                                <GraduationCapIcon className="h-5 w-5 text-rose-500" />
                                                                 Academic Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -809,7 +812,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <BookOpenIcon className="h-5 w-5 text-indigo-500" />
+                                                                <BookOpenIcon className="h-5 w-5 text-rose-500" />
                                                                 Previous Education
                                                             </CardTitle>
                                                         </CardHeader>
@@ -852,7 +855,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card className="md:col-span-2">
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <AwardIcon className="h-5 w-5 text-indigo-500" />
+                                                                <AwardIcon className="h-5 w-5 text-rose-500" />
                                                                 Achievements & Interests
                                                             </CardTitle>
                                                         </CardHeader>
@@ -890,7 +893,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <UserIcon className="h-5 w-5 text-indigo-500" />
+                                                                <UserIcon className="h-5 w-5 text-rose-500" />
                                                                 Father's Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -940,7 +943,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <UserIcon className="h-5 w-5 text-indigo-500" />
+                                                                <UserIcon className="h-5 w-5 text-rose-500" />
                                                                 Mother's Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -988,7 +991,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <UserPlusIcon className="h-5 w-5 text-indigo-500" />
+                                                                <UserPlusIcon className="h-5 w-5 text-rose-500" />
                                                                 Guardian's Information
                                                             </CardTitle>
                                                         </CardHeader>
@@ -1038,7 +1041,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <HomeIcon className="h-5 w-5 text-indigo-500" />
+                                                                <HomeIcon className="h-5 w-5 text-rose-500" />
                                                                 Parents' Address
                                                             </CardTitle>
                                                         </CardHeader>
@@ -1061,7 +1064,7 @@ export default function PrintDocuments({ students }: Props) {
                                                     <Card>
                                                         <CardHeader className="pb-2">
                                                             <CardTitle className="flex items-center gap-2 text-lg">
-                                                                <HeartIcon className="h-5 w-5 text-indigo-500" />
+                                                                <HeartIcon className="h-5 w-5 text-rose-500" />
                                                                 Health Information
                                                             </CardTitle>
                                                         </CardHeader>

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_file');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('file');
+            $table->string('name');
+            $table->string('file_path');
+            $table->string('file_name');
+            $table->string('file_size')->nullable();
+            $table->string('file_type')->nullable();
+            $table->foreignId('uploaded_by')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

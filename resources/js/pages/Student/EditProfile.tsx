@@ -219,7 +219,7 @@ export default function EditProfile({
                         type="submit"
                         form="student-profile-form"
                         disabled={processing}
-                        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                        className="bg-gradient-to-r from-rose-600 to-purple-600 hover:from-rose-700 hover:to-purple-700"
                     >
                         <SaveIcon className="mr-2 h-4 w-4" />
                         {processing ? 'Saving...' : 'Save Changes'}
@@ -250,7 +250,7 @@ export default function EditProfile({
 
                 <form id="student-profile-form" onSubmit={handleSubmit}>
                     <Card className="overflow-hidden border-none shadow-lg">
-                        <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 py-4">
+                        <CardHeader className="bg-gradient-to-r from-rose-600 to-purple-600 py-4">
                             <CardTitle className="text-white">Update Your Information</CardTitle>
                         </CardHeader>
                         <CardContent className="p-0">
@@ -261,7 +261,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="account"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'account' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'account' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <UserIcon className="mr-2 h-4 w-4" />
@@ -270,7 +270,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="personal"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'personal' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'personal' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <UserIcon className="mr-2 h-4 w-4" />
@@ -279,7 +279,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="academic"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'academic' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'academic' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <GraduationCapIcon className="mr-2 h-4 w-4" />
@@ -288,7 +288,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="family"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'family' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'family' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <Users2Icon className="mr-2 h-4 w-4" />
@@ -297,7 +297,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="achievements"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'achievements' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'achievements' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <BookOpenIcon className="mr-2 h-4 w-4" />
@@ -306,7 +306,7 @@ export default function EditProfile({
                                             <TabsTrigger
                                                 value="health"
                                                 className={`rounded-none border-b-2 px-4 py-3 ${
-                                                    activeTab === 'health' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                    activeTab === 'health' ? 'border-rose-600 text-rose-600' : 'border-transparent'
                                                 }`}
                                             >
                                                 <HeartIcon className="mr-2 h-4 w-4" />

@@ -29,7 +29,7 @@ export default function Pagination({ links, current_page, last_page }: Paginatio
               <Button
                 variant={link.active ? "default" : "outline"}
                 size="sm"
-                className={link.active ? "bg-indigo-600 hover:bg-indigo-700" : ""}
+                className={link.active ? "bg-rose-600 hover:bg-rose-700" : ""}
                 dangerouslySetInnerHTML={{
                   __html: link.label.replace("&laquo;", "«").replace("&raquo;", "»"),
                 }}

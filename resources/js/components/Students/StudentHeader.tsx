@@ -19,7 +19,7 @@ interface StudentHeaderProps {
 
 export default function StudentHeader({ student }: StudentHeaderProps) {
     return (
-        <Card className="border-none bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+        <Card className="border-none bg-gradient-to-r from-rose-600 to-purple-600 text-white shadow-md">
             <CardContent className="p-6">
                 <div className="flex flex-col items-start gap-6 md:flex-row md:items-center">
                     {student.photo ? (
@@ -44,7 +44,7 @@ export default function StudentHeader({ student }: StudentHeaderProps) {
                         <div className="mt-2 flex flex-wrap gap-3">
                             {student.no_test && (
                                 <div className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-sm">
-                                    <span>Test No: {student.no_test}</span>
+                                    <span>No. Tes: {student.no_test}</span>
                                 </div>
                             )}
                             {student.prodi && (
@@ -55,13 +55,13 @@ export default function StudentHeader({ student }: StudentHeaderProps) {
                             )}
                             {student.jalur_penerimaan && (
                                 <div className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-sm">
-                                    <span>Admission: {student.jalur_penerimaan}</span>
+                                    <span>Jalur: {student.jalur_penerimaan}</span>
                                 </div>
                             )}
                             {student.angkatan && (
                                 <div className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-sm">
                                     <CalendarIcon className="h-3.5 w-3.5" />
-                                    <span>Batch {student.angkatan}</span>
+                                    <span>Angkatan {student.angkatan}</span>
                                 </div>
                             )}
                         </div>

@@ -92,7 +92,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/student/dashboard',
     },
     {
-        title: 'My Profile',
+        title: 'Profil Saya',
         href: '#',
     },
 ];
@@ -102,7 +102,7 @@ export default function StudentDashboard({ student }: Props) {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Student Dashboard" />
+            <Head title="Dashboard Mahasiswa" />
 
             <div className="flex h-full flex-1 flex-col gap-6 p-4">
                 {/* Hero section with profile overview */}
@@ -123,11 +123,11 @@ export default function StudentDashboard({ student }: Props) {
                     <div className="lg:col-span-2">
                         <Card className="overflow-hidden border-none shadow-md">
                             <div className="flex items-center justify-between border-b bg-white p-4">
-                                <h2 className="text-xl font-semibold">My Profile Information</h2>
+                                <h2 className="text-xl font-semibold">Informasi Profil Saya</h2>
                                 <Link href={route('student.edit-profile')}>
-                                    <Button className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
+                                    <Button className="flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600">
                                         <PencilIcon className="h-4 w-4" />
-                                        Edit Profile
+                                        Edit Profil
                                     </Button>
                                 </Link>
                             </div>
@@ -140,47 +140,47 @@ export default function StudentDashboard({ student }: Props) {
                                                 <TabsTrigger
                                                     value="personal"
                                                     className={`rounded-none border-b-2 px-4 py-3 ${
-                                                        activeTab === 'personal' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                        activeTab === 'personal' ? 'border-rose-500 text-rose-500' : 'border-transparent'
                                                     }`}
                                                 >
                                                     <UserIcon className="mr-2 h-4 w-4" />
-                                                    Personal
+                                                    Data Pribadi
                                                 </TabsTrigger>
                                                 <TabsTrigger
                                                     value="academic"
                                                     className={`rounded-none border-b-2 px-4 py-3 ${
-                                                        activeTab === 'academic' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                        activeTab === 'academic' ? 'border-rose-500 text-rose-500' : 'border-transparent'
                                                     }`}
                                                 >
                                                     <GraduationCapIcon className="mr-2 h-4 w-4" />
-                                                    Academic
+                                                    Akademik
                                                 </TabsTrigger>
                                                 <TabsTrigger
                                                     value="family"
                                                     className={`rounded-none border-b-2 px-4 py-3 ${
-                                                        activeTab === 'family' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                        activeTab === 'family' ? 'border-rose-500 text-rose-500' : 'border-transparent'
                                                     }`}
                                                 >
                                                     <Users2Icon className="mr-2 h-4 w-4" />
-                                                    Family
+                                                    Keluarga
                                                 </TabsTrigger>
                                                 <TabsTrigger
                                                     value="achievements"
                                                     className={`rounded-none border-b-2 px-4 py-3 ${
-                                                        activeTab === 'achievements' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                        activeTab === 'achievements' ? 'border-rose-500 text-rose-500' : 'border-transparent'
                                                     }`}
                                                 >
                                                     <BookOpenIcon className="mr-2 h-4 w-4" />
-                                                    Achievements
+                                                    Prestasi
                                                 </TabsTrigger>
                                                 <TabsTrigger
                                                     value="health"
                                                     className={`rounded-none border-b-2 px-4 py-3 ${
-                                                        activeTab === 'health' ? 'border-indigo-600 text-indigo-600' : 'border-transparent'
+                                                        activeTab === 'health' ? 'border-rose-500 text-rose-500' : 'border-transparent'
                                                     }`}
                                                 >
                                                     <HeartIcon className="mr-2 h-4 w-4" />
-                                                    Health
+                                                    Kesehatan
                                                 </TabsTrigger>
                                             </TabsList>
                                         </div>
@@ -189,32 +189,32 @@ export default function StudentDashboard({ student }: Props) {
                                     <TabsContent value="personal" className="p-6">
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                             <StudentProfileSection
-                                                title="Personal Details"
+                                                title="Data Pribadi"
                                                 icon={<UserIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Full Name', value: student.user.name },
-                                                    { label: 'Gender', value: student.jk || 'Not specified' },
-                                                    { label: 'Birth Place', value: student.tmp_lahir || 'Not specified' },
+                                                    { label: 'Nama Lengkap', value: student.user.name },
+                                                    { label: 'Jenis Kelamin', value: student.jk || 'Belum diisi' },
+                                                    { label: 'Tempat Lahir', value: student.tmp_lahir || 'Belum diisi' },
                                                     {
-                                                        label: 'Birth Date',
-                                                        value: student.tgl_lahir ? new Date(student.tgl_lahir).toLocaleDateString() : 'Not specified',
+                                                        label: 'Tanggal Lahir',
+                                                        value: student.tgl_lahir ? new Date(student.tgl_lahir).toLocaleDateString() : 'Belum diisi',
                                                     },
-                                                    { label: 'Religion', value: student.agama || 'Not specified' },
-                                                    { label: 'Ethnicity', value: student.suku || 'Not specified' },
-                                                    { label: 'Nationality', value: student.kewarnegaraan || 'Not specified' },
-                                                    { label: 'Phone Number', value: student.nohp || 'Not specified' },
-                                                    { label: 'Email', value: student.email || 'Not specified' },
+                                                    { label: 'Agama', value: student.agama || 'Belum diisi' },
+                                                    { label: 'Suku', value: student.suku || 'Belum diisi' },
+                                                    { label: 'Kewarganegaraan', value: student.kewarnegaraan || 'Belum diisi' },
+                                                    { label: 'Nomor HP', value: student.nohp || 'Belum diisi' },
+                                                    { label: 'Email', value: student.email || 'Belum diisi' },
                                                 ]}
                                             />
 
                                             <StudentProfileSection
-                                                title="Address & Living"
+                                                title="Alamat & Tempat Tinggal"
                                                 icon={<HomeIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Address', value: student.alamat || 'Not specified', fullWidth: true },
-                                                    { label: 'Living Status', value: student.status_huni_rumah || 'Not specified' },
-                                                    { label: 'Older Siblings', value: student.jml_kakak?.toString() || '0' },
-                                                    { label: 'Younger Siblings', value: student.jml_adik?.toString() || '0' },
+                                                    { label: 'Alamat', value: student.alamat || 'Belum diisi', fullWidth: true },
+                                                    { label: 'Status Tempat Tinggal', value: student.status_huni_rumah || 'Belum diisi' },
+                                                    { label: 'Jumlah Kakak', value: student.jml_kakak?.toString() || '0' },
+                                                    { label: 'Jumlah Adik', value: student.jml_adik?.toString() || '0' },
                                                 ]}
                                             />
                                         </div>
@@ -223,28 +223,28 @@ export default function StudentDashboard({ student }: Props) {
                                     <TabsContent value="academic" className="p-6">
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                             <StudentProfileSection
-                                                title="Academic Information"
+                                                title="Informasi Akademik"
                                                 icon={<GraduationCapIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Test Number', value: student.no_test || 'Not specified' },
-                                                    { label: 'Admission Path', value: student.jalur_penerimaan || 'Not specified' },
-                                                    { label: 'Batch Year', value: student.angkatan?.toString() || 'Not specified' },
-                                                    { label: 'Study Program', value: student.prodi || 'Not specified' },
+                                                    { label: 'Nomor Tes', value: student.no_test || 'Belum diisi' },
+                                                    { label: 'Jalur Penerimaan', value: student.jalur_penerimaan || 'Belum diisi' },
+                                                    { label: 'Angkatan', value: student.angkatan?.toString() || 'Belum diisi' },
+                                                    { label: 'Program Studi', value: student.prodi || 'Belum diisi' },
                                                 ]}
                                             />
 
                                             <StudentProfileSection
-                                                title="Previous Education"
+                                                title="Pendidikan Sebelumnya"
                                                 icon={<BookOpenIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'School Name', value: student.nama_sekolah || 'Not specified' },
-                                                    { label: 'School District', value: student.kab_sekolah || 'Not specified' },
-                                                    { label: 'School Province', value: student.prov_sekolah || 'Not specified' },
-                                                    { label: 'Entry Year', value: student.thn_masuk?.toString() || 'Not specified' },
-                                                    { label: 'Graduation Year', value: student.thn_lulus?.toString() || 'Not specified' },
-                                                    { label: 'Number of Subjects', value: student.jml_mapel?.toString() || 'Not specified' },
-                                                    { label: 'Score', value: student.nilai?.toString() || 'Not specified' },
-                                                    { label: 'Certificate Number', value: student.no_ijazah?.toString() || 'Not specified' },
+                                                    { label: 'Nama Sekolah', value: student.nama_sekolah || 'Belum diisi' },
+                                                    { label: 'Kabupaten Sekolah', value: student.kab_sekolah || 'Belum diisi' },
+                                                    { label: 'Provinsi Sekolah', value: student.prov_sekolah || 'Belum diisi' },
+                                                    { label: 'Tahun Masuk', value: student.thn_masuk?.toString() || 'Belum diisi' },
+                                                    { label: 'Tahun Lulus', value: student.thn_lulus?.toString() || 'Belum diisi' },
+                                                    { label: 'Jumlah Mata Pelajaran', value: student.jml_mapel?.toString() || 'Belum diisi' },
+                                                    { label: 'Nilai', value: student.nilai?.toString() || 'Belum diisi' },
+                                                    { label: 'Nomor Ijazah', value: student.no_ijazah?.toString() || 'Belum diisi' },
                                                 ]}
                                             />
                                         </div>
@@ -253,68 +253,68 @@ export default function StudentDashboard({ student }: Props) {
                                     <TabsContent value="family" className="p-6">
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                             <StudentProfileSection
-                                                title="Father's Information"
+                                                title="Informasi Ayah"
                                                 icon={<UserIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Name', value: student.nama_ayah || 'Not specified' },
-                                                    { label: 'Religion', value: student.agama_ayah || 'Not specified' },
-                                                    { label: 'Education', value: student.pendidikan_ayah || 'Not specified' },
-                                                    { label: 'Occupation', value: student.pekerjaan_ayah || 'Not specified' },
+                                                    { label: 'Nama', value: student.nama_ayah || 'Belum diisi' },
+                                                    { label: 'Agama', value: student.agama_ayah || 'Belum diisi' },
+                                                    { label: 'Pendidikan', value: student.pendidikan_ayah || 'Belum diisi' },
+                                                    { label: 'Pekerjaan', value: student.pekerjaan_ayah || 'Belum diisi' },
                                                     {
-                                                        label: 'Income',
+                                                        label: 'Penghasilan',
                                                         value: student.penghasilan_ayah
                                                             ? `Rp ${student.penghasilan_ayah.toLocaleString()}`
-                                                            : 'Not specified',
+                                                            : 'Belum diisi',
                                                     },
-                                                    { label: 'Phone', value: student.nohp_ayah || 'Not specified' },
+                                                    { label: 'Nomor HP', value: student.nohp_ayah || 'Belum diisi' },
                                                 ]}
                                             />
 
                                             <StudentProfileSection
-                                                title="Mother's Information"
+                                                title="Informasi Ibu"
                                                 icon={<UserIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Name', value: student.nama_ibu || 'Not specified' },
-                                                    { label: 'Religion', value: student.agama_ibu || 'Not specified' },
-                                                    { label: 'Education', value: student.pendidikan_ibu || 'Not specified' },
-                                                    { label: 'Occupation', value: student.pekerjaan_ibu || 'Not specified' },
+                                                    { label: 'Nama', value: student.nama_ibu || 'Belum diisi' },
+                                                    { label: 'Agama', value: student.agama_ibu || 'Belum diisi' },
+                                                    { label: 'Pendidikan', value: student.pendidikan_ibu || 'Belum diisi' },
+                                                    { label: 'Pekerjaan', value: student.pekerjaan_ibu || 'Belum diisi' },
                                                     {
-                                                        label: 'Income',
+                                                        label: 'Penghasilan',
                                                         value: student.penghasilan_ibu
                                                             ? `Rp ${student.penghasilan_ibu.toLocaleString()}`
-                                                            : 'Not specified',
+                                                            : 'Belum diisi',
                                                     },
-                                                    { label: 'Phone', value: student.nohp_ibu || 'Not specified' },
+                                                    { label: 'Nomor HP', value: student.nohp_ibu || 'Belum diisi' },
                                                 ]}
                                             />
 
                                             <StudentProfileSection
-                                                title="Guardian's Information"
+                                                title="Informasi Wali"
                                                 icon={<ShieldIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Name', value: student.nama_wali || 'Not specified' },
-                                                    { label: 'NIP/NRP', value: student.nipnrp || 'Not specified' },
-                                                    { label: 'Rank', value: student.pangkat || 'Not specified' },
-                                                    { label: 'Institution', value: student.instansi || 'Not specified' },
-                                                    { label: 'Education', value: student.pendidikan_wali || 'Not specified' },
+                                                    { label: 'Nama', value: student.nama_wali || 'Belum diisi' },
+                                                    { label: 'NIP/NRP', value: student.nipnrp || 'Belum diisi' },
+                                                    { label: 'Pangkat', value: student.pangkat || 'Belum diisi' },
+                                                    { label: 'Instansi', value: student.instansi || 'Belum diisi' },
+                                                    { label: 'Pendidikan', value: student.pendidikan_wali || 'Belum diisi' },
                                                     {
-                                                        label: 'Income',
+                                                        label: 'Penghasilan',
                                                         value: student.penghasilan_wali
                                                             ? `Rp ${student.penghasilan_wali.toLocaleString()}`
-                                                            : 'Not specified',
+                                                            : 'Belum diisi',
                                                     },
-                                                    { label: 'Phone', value: student.nohp_wali || 'Not specified' },
+                                                    { label: 'Nomor HP', value: student.nohp_wali || 'Belum diisi' },
                                                 ]}
                                             />
 
                                             <StudentProfileSection
-                                                title="Parents' Residence"
+                                                title="Tempat Tinggal Orang Tua"
                                                 icon={<HomeIcon className="h-5 w-5" />}
                                                 items={[
-                                                    { label: 'Address', value: student.alamat_orangtua || 'Not specified', fullWidth: true },
+                                                    { label: 'Alamat', value: student.alamat_orangtua || 'Belum diisi', fullWidth: true },
                                                     {
-                                                        label: 'Electricity Power',
-                                                        value: student.daya_listrik ? `${student.daya_listrik} Watt` : 'Not specified',
+                                                        label: 'Daya Listrik',
+                                                        value: student.daya_listrik ? `${student.daya_listrik} Watt` : 'Belum diisi',
                                                     },
                                                 ]}
                                             />
@@ -324,27 +324,27 @@ export default function StudentDashboard({ student }: Props) {
                                     <TabsContent value="achievements" className="p-6">
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                             <StudentProfileSection
-                                                title="Academic Achievements"
+                                                title="Prestasi Akademik"
                                                 icon={<BadgeIcon className="h-5 w-5" />}
-                                                textContent={student.akademik || 'No academic achievements recorded.'}
+                                                textContent={student.akademik || 'Belum ada prestasi akademik yang tercatat.'}
                                             />
 
                                             <StudentProfileSection
-                                                title="Non-Academic Achievements"
+                                                title="Prestasi Non-Akademik"
                                                 icon={<BadgeIcon className="h-5 w-5" />}
-                                                textContent={student.non_akademik || 'No non-academic achievements recorded.'}
+                                                textContent={student.non_akademik || 'Belum ada prestasi non-akademik yang tercatat.'}
                                             />
 
                                             <StudentProfileSection
-                                                title="Sports"
+                                                title="Olahraga"
                                                 icon={<BadgeIcon className="h-5 w-5" />}
-                                                textContent={student.olahraga || 'No sports activities recorded.'}
+                                                textContent={student.olahraga || 'Belum ada aktivitas olahraga yang tercatat.'}
                                             />
 
                                             <StudentProfileSection
-                                                title="Arts"
+                                                title="Kesenian"
                                                 icon={<BadgeIcon className="h-5 w-5" />}
-                                                textContent={student.kesenian || 'No arts activities recorded.'}
+                                                textContent={student.kesenian || 'Belum ada aktivitas kesenian yang tercatat.'}
                                             />
                                         </div>
                                     </TabsContent>
@@ -353,27 +353,27 @@ export default function StudentDashboard({ student }: Props) {
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                             <div className="md:col-span-2">
                                                 <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                                                    <div className="rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 p-6 text-center shadow-sm">
-                                                        <div className="text-3xl font-bold text-indigo-600">{student.tinggi || '-'}</div>
-                                                        <div className="mt-1 text-sm font-medium text-indigo-800">Height (cm)</div>
+                                                    <div className="rounded-lg bg-gradient-to-br from-rose-50 to-pink-50 p-6 text-center shadow-sm">
+                                                        <div className="text-3xl font-bold text-rose-600">{student.tinggi || '-'}</div>
+                                                        <div className="mt-1 text-sm font-medium text-rose-800">Tinggi Badan (cm)</div>
                                                     </div>
-                                                    <div className="rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 p-6 text-center shadow-sm">
+                                                    <div className="rounded-lg bg-gradient-to-br from-pink-50 to-rose-50 p-6 text-center shadow-sm">
                                                         <div className="text-3xl font-bold text-pink-600">{student.berat || '-'}</div>
-                                                        <div className="mt-1 text-sm font-medium text-pink-800">Weight (kg)</div>
+                                                        <div className="mt-1 text-sm font-medium text-pink-800">Berat Badan (kg)</div>
                                                     </div>
-                                                    <div className="rounded-lg bg-gradient-to-br from-green-50 to-teal-50 p-6 text-center shadow-sm">
-                                                        <div className="text-3xl font-bold text-teal-600">{student.tekanan_darah || '-'}</div>
-                                                        <div className="mt-1 text-sm font-medium text-teal-800">Blood Pressure</div>
+                                                    <div className="rounded-lg bg-gradient-to-br from-rose-50 to-red-50 p-6 text-center shadow-sm">
+                                                        <div className="text-3xl font-bold text-rose-600">{student.tekanan_darah || '-'}</div>
+                                                        <div className="mt-1 text-sm font-medium text-rose-800">Tekanan Darah</div>
                                                     </div>
-                                                    <div className="rounded-lg bg-gradient-to-br from-red-50 to-orange-50 p-6 text-center shadow-sm">
+                                                    <div className="rounded-lg bg-gradient-to-br from-red-50 to-rose-50 p-6 text-center shadow-sm">
                                                         <div className="text-3xl font-bold text-red-600">{student.gol_darah || '-'}</div>
-                                                        <div className="mt-1 text-sm font-medium text-red-800">Blood Type</div>
+                                                        <div className="mt-1 text-sm font-medium text-red-800">Golongan Darah</div>
                                                     </div>
                                                 </div>
 
                                                 {student.tinggi && student.berat && (
-                                                    <div className="mt-6 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 p-6 shadow-sm">
-                                                        <h3 className="mb-4 text-lg font-semibold text-indigo-800">Body Mass Index (BMI)</h3>
+                                                    <div className="mt-6 rounded-lg bg-gradient-to-r from-rose-50 to-pink-50 p-6 shadow-sm">
+                                                        <h3 className="mb-4 text-lg font-semibold text-rose-800">Indeks Massa Tubuh (IMT)</h3>
                                                         <div className="flex items-center">
                                                             <div className="h-4 w-full overflow-hidden rounded-full bg-gray-200">
                                                                 {(() => {
@@ -401,24 +401,24 @@ export default function StudentDashboard({ student }: Props) {
                                                             </div>
                                                         </div>
                                                         <div className="mt-4 flex justify-between text-sm">
-                                                            <span className="font-medium text-blue-700">Underweight</span>
+                                                            <span className="font-medium text-blue-700">Kurus</span>
                                                             <span className="font-medium text-green-700">Normal</span>
-                                                            <span className="font-medium text-orange-700">Overweight</span>
-                                                            <span className="font-medium text-red-700">Obese</span>
+                                                            <span className="font-medium text-orange-700">Kelebihan Berat</span>
+                                                            <span className="font-medium text-red-700">Obesitas</span>
                                                         </div>
                                                         <div className="mt-6 text-center">
-                                                            <span className="text-2xl font-bold text-indigo-700">
+                                                            <span className="text-2xl font-bold text-rose-700">
                                                                 {(student.berat / ((student.tinggi / 100) * (student.tinggi / 100))).toFixed(2)}
                                                             </span>
                                                             <p className="mt-2 text-sm text-gray-600">
                                                                 {(() => {
                                                                     const bmi = student.berat / ((student.tinggi / 100) * (student.tinggi / 100));
                                                                     if (bmi < 18.5)
-                                                                        return 'You are underweight. Consider consulting with a nutritionist.';
-                                                                    if (bmi < 25) return 'Your BMI is in the normal range. Keep up the good work!';
+                                                                        return 'Anda kekurangan berat badan. Pertimbangkan untuk berkonsultasi dengan ahli gizi.';
+                                                                    if (bmi < 25) return 'IMT Anda dalam kisaran normal. Pertahankan pola hidup sehat!';
                                                                     if (bmi < 30)
-                                                                        return 'You are overweight. Consider a balanced diet and regular exercise.';
-                                                                    return 'You are in the obese range. Please consult with a healthcare professional.';
+                                                                        return 'Anda kelebihan berat badan. Pertimbangkan pola makan seimbang dan olahraga teratur.';
+                                                                    return 'Anda dalam kisaran obesitas. Silakan konsultasikan dengan tenaga kesehatan.';
                                                                 })()}
                                                             </p>
                                                         </div>
